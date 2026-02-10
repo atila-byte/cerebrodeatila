@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumos Clínicos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilo da Lista de Resumos */
+        .search-container { 
+            background: #fff; 
+            padding: 20px; 
+            position: sticky; 
+            top: 55px; 
+            z-index: 90; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .search-box { 
+            width: 100%; 
+            padding: 15px 15px 15px 45px; /* Espaço para o ícone */
+            border: 2px solid #E0E0E0; 
+            border-radius: 12px; 
+            font-size: 1rem; 
+            background: #FAFAFA url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat 15px center;
+            transition: all 0.3s;
+        }
+        .search-box:focus { border-color: var(--primary); background-color: #fff; outline: none; }
+
+        /* Grid de Doenças */
+        .disease-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Lista vertical em celular fica melhor para leitura */
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .disease-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 6px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s;
+        }
+        
+        .disease-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        .d-info { display: flex; flex-direction: column; }
+        .d-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 4px; }
+        .d-desc { font-size: 0.85rem; color: #777; }
+        .d-icon { font-size: 1.8rem; }
+
+        /* Cores Específicas */
+        .border-red { border-left-color: #E53935; }
+        .border-blue { border-left-color: #1E88E5; }
+        .border-yellow { border-left-color: #FDD835; }
+        .border-purple { border-left-color: #8E24AA; }
+        .border-grey { border-left-color: #546E7A; }
+
+        /* Mensagem "Não encontrado" */
+        .no-results { text-align: center; color: #999; margin-top: 30px; display: none; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='index.html'">⬅</button>
+        <div class="app-title">Resumos Clínicos 📚</div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="disease-search" class="search-box" placeholder="Pesquisar doença (ex: Asma, Diabetes)..." onkeyup="filterDiseases()">
+    </div>
+
+    <div class="container">
+        <div id="disease-list" class="disease-grid">
+            
+            <a href="resumo_has.html" class="disease-card border-red" data-name="hipertensão arterial has pressão alta">
+                <div class="d-info">
+                    <span class="d-title">Hipertensão Arterial</span>
+                    <span class="d-desc">Diagnóstico, Metas e Tratamento (A-B-C-D)</span>
+                </div>
+                <span class="d-icon">❤️</span>
+            </a>
+
+            <a href="resumo_dm.html" class="disease-card border-blue" data-name="diabetes mellitus dm2 glicemia">
+                <div class="d-info">
+                    <span class="d-title">Diabetes Mellitus</span>
+                    <span class="d-desc">Critérios, HbA1c e Farmacologia</span>
+                </div>
+                <span class="d-icon">🩸</span>
+            </a>
+
+            <a href="resumo_tb.html" class="disease-card border-yellow" data-name="tuberculose tb tosse sintomático respiratório">
+                <div class="d-info">
+                    <span class="d-title">Tuberculose</span>
+                    <span class="d-desc">Rastreio, Esquema RHZE e Efeitos Adversos</span>
+                </div>
+                <span class="d-icon">🦠</span>
+            </a>
+
+            <a href="resumo_asma.html" class="disease-card border-purple" data-name="asma sibilância gina bronquite">
+                <div class="d-info">
+                    <span class="d-title">Asma</span>
+                    <span class="d-desc">Classificação e Etapas GINA</span>
+                </div>
+                <span class="d-icon">🌬️</span>
+            </a>
+
+            <a href="resumo_dpoc.html" class="disease-card border-grey" data-name="dpoc enfisema tabagismo gold">
+                <div class="d-info">
+                    <span class="d-title">DPOC</span>
+                    <span class="d-desc">Critérios GOLD e Tratamento (A-B-E)</span>
+                </div>
+                <span class="d-icon">🚬</span>
+            </a>
+
+        </div>
+        
+        <div id="no-results" class="no-results">
+            Nenhuma doença encontrada.
+        </div>
+    </div>
+
+    <script>
+        function filterDiseases() {
+            const input = document.getElementById('disease-search');
+            const filter = input.value.toLowerCase();
+            const list = document.getElementById('disease-list');
+            const cards = list.getElementsByClassName('disease-card');
+            let visibleCount = 0;
+
+            for (let i = 0; i < cards.length; i++) {
+                const keywords = cards[i].getAttribute('data-name');
+                if (keywords.includes(filter)) {
+                    cards[i].style.display = "flex";
+                    visibleCount++;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

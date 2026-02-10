@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuberculose (MS/Brasil)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* TEMA LARANJA/TERRACOTA (TUBERCULOSE - ALERTA BIOLÓGICO) */
+        :root { --theme-tb: #E65100; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-tb);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #BF360C; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #FFE0B2;
+            padding-bottom: 10px;
+        }
+
+        .res-content { font-size: 0.95rem; color: #444; line-height: 1.6; }
+        
+        /* Tabelas */
+        .table-custom { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85rem; }
+        .table-custom th { background-color: #FFE0B2; color: #BF360C; padding: 8px; text-align: left; border: 1px solid #FFCC80; }
+        .table-custom td { padding: 8px; border: 1px solid #eee; }
+        .table-custom tr:nth-child(even) { background-color: #FAFAFA; }
+
+        /* Drugs */
+        .drug-table { width: 100%; font-size: 0.85rem; margin-bottom: 20px; border-collapse: collapse; }
+        .drug-table th { background: #ECEFF1; color: #37474F; text-align: left; padding: 8px; border-bottom: 2px solid #CFD8DC; }
+        .drug-table td { border-bottom: 1px solid #eee; padding: 8px; vertical-align: middle; }
+        .drug-name { font-weight: 700; color: #E65100; display: block; font-size: 0.9rem; }
+        
+        /* TAG SUS */
+        .tag-sus { 
+            background-color: #2E7D32; color: white; 
+            padding: 3px 8px; border-radius: 4px; 
+            font-size: 0.75rem; font-weight: bold; 
+            display: inline-block; margin-left: 5px;
+            vertical-align: text-bottom;
+        }
+
+        /* Section Dividers */
+        .section-title { 
+            background: var(--theme-tb); color: white; 
+            padding: 10px 15px; border-radius: 8px; 
+            font-weight: bold; margin: 30px 0 15px 0; 
+            text-align: center; text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(230, 81, 0, 0.2);
+        }
+
+        /* Check lists */
+        .check-list li { margin-bottom: 6px; }
+        .check-list li::before { content: "• "; color: var(--theme-tb); font-weight: bold; }
+
+        /* Boxes de Destaque */
+        .alert-box { background: #FFF3E0; border: 1px dashed #FFB74D; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 0.9rem; }
+        
+        /* Sintomas */
+        .symptom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
+        .symptom-card { background: #FFF8E1; padding: 10px; border-radius: 8px; border-left: 3px solid #FF8F00; }
+
+        .ref-section { margin-top: 40px; font-size: 0.75rem; color: #777; border-top: 1px solid #ddd; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='resumos.html'">⬅</button>
+        <div class="app-title">Tuberculose (MS/Brasil)</div>
+    </header>
+
+    <div class="container">
+
+        <div class="section-title">🤒 Quadro Clínico e Suspeição</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🤧 Sinais e Sintomas</div>
+            <div class="res-content">
+                <p>A forma pulmonar é a mais frequente e relevante para a saúde pública.</p>
+                <div class="symptom-grid">
+                    <div class="symptom-card">
+                        <strong>🌬️ Respiratórios</strong>
+                        <ul class="check-list" style="margin-top:5px; font-size:0.85rem;">
+                            <li><strong>Tosse:</strong> Seca ou produtiva (mucóide/purulenta/sanguinolenta). Principal sintoma.</li>
+                            <li><strong>Dor torácica:</strong> Pleurítica ou difusa.</li>
+                            <li><strong>Dispneia:</strong> Em casos avançados ou derrame pleural.</li>
+                        </ul>
+                    </div>
+                    <div class="symptom-card">
+                        <strong>🌡️ Sistêmicos</strong>
+                        <ul class="check-list" style="margin-top:5px; font-size:0.85rem;">
+                            <li><strong>Febre vespertina:</strong> Baixa, final da tarde, sem calafrios.</li>
+                            <li><strong>Sudorese noturna:</strong> Profusa (molha a roupa).</li>
+                            <li><strong>Emagrecimento:</strong> Perda ponderal inexplicada e anorexia.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">🔍 Definição de Sintomático Respiratório (SR)</div>
+            <div class="res-content">
+                <p>Busca ativa em todo paciente que apresente <strong>tosse</strong>. Critério de tempo:</p>
+                <table class="table-custom">
+                    <tr><th>População</th><th>Duração da Tosse</th></tr>
+                    <tr><td>População Geral</td><td>&ge; 3 semanas</td></tr>
+                    <tr><td>Privados de Liberdade / Pessoas em Situação de Rua / Indígenas / PVHIV</td><td>Qualquer tempo (Tosse = Investigar)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-title">🔬 Métodos Diagnósticos</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🧪 Comparativo dos Métodos</div>
+            <div class="res-content">
+                <p><strong>1ª Escolha (MS):</strong> Teste Rápido Molecular (TRM-TB) para diagnóstico inicial.</p>
+                <div style="overflow-x:auto;">
+                    <table class="table-custom">
+                        <tr>
+                            <th>Método</th>
+                            <th>Tempo Resultado</th>
+                            <th>Vantagens</th>
+                            <th>Desvantagens</th>
+                        </tr>
+                        <tr>
+                            <td><strong>TRM-TB</strong><br>(GeneXpert)</td>
+                            <td><strong>2 horas</strong><br>(Muito Rápido)</td>
+                            <td>
+                                • Alta sensibilidade/especificidade.<br>
+                                • Detecta DNA do bacilo.<br>
+                                • <strong>Detecta resistência à Rifampicina.</strong><br>
+                                • Requer apenas 1 amostra.
+                            </td>
+                            <td>
+                                • Não serve para controle de tratamento (detecta bacilo morto).<br>
+                                • Alto custo e necessidade de equipamento.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Baciloscopia</strong><br>(BAAR)</td>
+                            <td><strong>2 a 24 horas</strong><br>(Rápido)</td>
+                            <td>
+                                • Baixo custo e alta disponibilidade.<br>
+                                • <strong>Padrão para controle mensal de tratamento.</strong><br>
+                                • Avalia carga bacilífera (infectividade).
+                            </td>
+                            <td>
+                                • Baixa sensibilidade (precisa de muitos bacilos: 5k-10k/ml).<br>
+                                • Não identifica espécie ou resistência.<br>
+                                • Precisa de 2 amostras p/ diagnóstico.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cultura</strong><br>(Sólida/Líquida)</td>
+                            <td><strong>14 a 60 dias</strong><br>(Demorado)</td>
+                            <td>
+                                • <strong>Padrão-Ouro.</strong><br>
+                                • Altíssima sensibilidade (detecta poucos bacilos).<br>
+                                • Permite Teste de Sensibilidade (TS) completo.<br>
+                                • Diferencia espécies (MNT).
+                            </td>
+                            <td>
+                                • Demora no resultado.<br>
+                                • Exige laboratório complexo.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Raio-X Tórax</strong></td>
+                            <td><strong>Imediato</strong></td>
+                            <td>
+                                • Alta sensibilidade (triage).<br>
+                                • Avalia extensão e sequelas.<br>
+                                • <em>Padrão típico:</em> Cavitações, infiltrados apicais.
+                            </td>
+                            <td>
+                                • Baixa especificidade (confunde com pneumonia).<br>
+                                • Não confirma etiologia (precisa do bacteriológico).
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="alert-box">
+                    <strong>⚠️ Notificação Compulsória:</strong> Todo caso confirmado deve ser notificado no SINAN. Iniciar tratamento imediatamente.
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">💊 Tratamento (Esquema Básico)</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🗓️ Esquema Básico (Adolescentes e Adultos)</div>
+            <div class="res-content">
+                <p>Casos novos ou retratamento (recidiva/reingresso).<br>
+                <strong>Duração Total:</strong> 6 meses.</p>
+                
+                <table class="table-custom">
+                    <tr>
+                        <th width="20%">Fase</th>
+                        <th width="20%">Duração</th>
+                        <th>Medicamentos (Dose Fixa Combinada)</th>
+                        <th>Frequência</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Intensiva</strong><br>(Ataque)</td>
+                        <td>2 meses</td>
+                        <td><strong>RHZE</strong><br>Rifampicina (150) + Isoniazida (75) + Pirazinamida (400) + Etambutol (275)</td>
+                        <td>Diária<br>(Dose única)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manutenção</strong></td>
+                        <td>4 meses</td>
+                        <td><strong>RH</strong><br>Rifampicina (150 ou 300) + Isoniazida (75 ou 150)</td>
+                        <td>Diária<br>(Dose única)</td>
+                    </tr>
+                </table>
+
+                <h4 style="color:#BF360C; margin-top:15px;">Dose por Faixa de Peso (Comprimidos DFC)</h4>
+                <table class="drug-table">
+                    <tr>
+                        <th>Faixa de Peso</th>
+                        <th>Fase Intensiva (RHZE)</th>
+                        <th>Fase Manutenção (RH)</th>
+                    </tr>
+                    <tr>
+                        <td>20 a 35 kg</td>
+                        <td>2 comprimidos</td>
+                        <td>2 comprimidos (RH 150/75)</td>
+                    </tr>
+                    <tr>
+                        <td>36 a 50 kg</td>
+                        <td>3 comprimidos</td>
+                        <td>3 comprimidos (RH 150/75)</td>
+                    </tr>
+                    <tr>
+                        <td>> 50 kg</td>
+                        <td>4 comprimidos</td>
+                        <td>2 cápsulas (RH 300/150)*</td>
+                    </tr>
+                </table>
+                <p style="font-size:0.8rem; color:#555;">*Atenção à apresentação de RH na manutenção para >50kg (normalmente cápsula de 300/150mg).</p>
+                
+                <div style="background:#E8F5E9; color:#2E7D32; padding:10px; border-radius:6px; font-weight:bold; text-align:center;">
+                    Todos os medicamentos disponíveis no SUS <span class="tag-sus">SUS</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">🧠 TB Meningoencefálica e Osteoarticular</div>
+            <div class="res-content">
+                <p><strong>Duração Total:</strong> 12 meses.</p>
+                <ul class="check-list">
+                    <li><strong>Fase Intensiva (2 meses):</strong> RHZE.</li>
+                    <li><strong>Fase Manutenção (10 meses):</strong> RH.</li>
+                    <li><strong>Corticosteroide (Meningo):</strong> Prednisona (1-2 mg/kg/dia) por 4 semanas, com redução gradual. Essencial para reduzir sequelas.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-title">📉 Seguimento e Reações</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🗓️ Monitoramento (Baciloscopia Mensal)</div>
+            <div class="res-content">
+                <table class="table-custom">
+                    <tr><th>Mês</th><th>Resultado da Baciloscopia</th><th>Conduta</th></tr>
+                    <tr><td><strong>2º Mês</strong></td><td>Positiva (+)</td><td>Solicitar Cultura + TS. Avaliar adesão. Manter esquema até resultado.</td></tr>
+                    <tr><td><strong>4º Mês</strong></td><td>Positiva (+)</td><td>Provável falência. Solicitar Cultura + TS. Considerar esquema para TB Resistente.</td></tr>
+                    <tr><td><strong>6º Mês</strong></td><td>Positiva (+)</td><td>Falência confirmada. Encaminhar para referência.</td></tr>
+                </table>
+                <p><strong>Critério de Alta (Cura):</strong> Completou tratamento + Baciloscopias negativas.</p>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">⚠️ Reações Adversas (RAM)</div>
+            <div class="res-content">
+                <ul class="check-list">
+                    <li><strong>Intolerância Gástrica:</strong> Sintomáticos, tomar com refeição leve. Não suspender se leve.</li>
+                    <li><strong>Hepatotoxicidade (Icterícia):</strong> Suspender <strong>tudo</strong>. Reintroduzir sequencialmente: Etambutol -> Rifampicina -> Isoniazida -> Pirazinamida (RE-R-H-Z). Monitorar TGO/TGP.</li>
+                    <li><strong>Suor/Urina Vermelha:</strong> Efeito da Rifampicina (benigno). Apenas orientar.</li>
+                    <li><strong>Neuropatia Periférica:</strong> Isoniazida. Tratamento: Repor Vitamina B6 (Piridoxina).</li>
+                    <li><strong>Neurite Óptica:</strong> Etambutol. Suspender imediatamente.</li>
+                    <li><strong>Hiperuricemia/Artralgia:</strong> Pirazinamida. Dieta pobre em purinas e AINEs.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-title">🛡️ Infecção Latente (ILTB)</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🔎 Diagnóstico e Conduta</div>
+            <div class="res-content">
+                <p>Tratar para evitar evolução para TB ativa. Diagnóstico por PPD ou IGRA após excluir doença ativa (RX Tórax).</p>
+                <table class="table-custom">
+                    <tr><th>PPD (mm)</th><th>Interpretação</th></tr>
+                    <tr><td><strong>&ge; 5 mm</strong></td><td>Positivo para: Contatos de TB, HIV+, Imunossuprimidos, Pré-transplante.</td></tr>
+                    <tr><td><strong>&ge; 10 mm</strong></td><td>Positivo para: Silicose, Neoplasias, DRC, Diabetes, Baixo peso, Profissionais de saúde.</td></tr>
+                </table>
+                <br>
+                <table class="drug-table">
+                    <tr><th>Esquema</th><th>Fármaco</th><th>Duração</th></tr>
+                    <tr><td><strong>Preferencial</strong></td><td><span class="drug-name">Isoniazida (H) 300mg</span></td><td>270 doses (9 meses) - Mais efetivo.<br>ou 180 doses (6 meses).</td></tr>
+                    <tr><td><strong>Alternativo</strong></td><td><span class="drug-name">Rifampicina (R) 600mg</span></td><td>120 doses (4 meses). Indicado para > 50 anos, hepatopatas.</td></tr>
+                    <tr><td><strong>Curta Duração</strong></td><td><span class="drug-name">Rifapentina + Isoniazida (3HP)</span></td><td>12 doses (3 meses - Semanal).</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="ref-section">
+            <strong>Referência:</strong><br>
+            Brasil. Ministério da Saúde. Manual de Recomendações para o Controle da Tuberculose no Brasil. 2. ed. atual. Brasília: Ministério da Saúde, 2019/2022.
+        </div>
+
+    </div>
+
+</body>
+</html>
