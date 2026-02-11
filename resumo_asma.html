@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asma (GINA 2025)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* TEMA ROXO (ASMA/RESPIRATÓRIO CRÔNICO) */
+        :root { --theme-asthma: #673AB7; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-asthma);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #4527A0; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #D1C4E9;
+            padding-bottom: 10px;
+        }
+
+        .res-content { font-size: 0.95rem; color: #444; line-height: 1.6; }
+        
+        /* Tabelas */
+        .table-custom { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85rem; }
+        .table-custom th { background-color: #EDE7F6; color: #4527A0; padding: 8px; text-align: left; border: 1px solid #D1C4E9; }
+        .table-custom td { padding: 8px; border: 1px solid #eee; }
+        .table-custom tr:nth-child(even) { background-color: #FAFAFA; }
+
+        /* Drugs */
+        .drug-table { width: 100%; font-size: 0.85rem; margin-bottom: 20px; border-collapse: collapse; }
+        .drug-table th { background: #ECEFF1; color: #37474F; text-align: left; padding: 8px; border-bottom: 2px solid #CFD8DC; }
+        .drug-table td { border-bottom: 1px solid #eee; padding: 8px; vertical-align: middle; }
+        .drug-name { font-weight: 700; color: #673AB7; display: block; font-size: 0.9rem; }
+        
+        /* TAG SUS */
+        .tag-sus { 
+            background-color: #2E7D32; color: white; 
+            padding: 3px 8px; border-radius: 4px; 
+            font-size: 0.75rem; font-weight: bold; 
+            display: inline-block; margin-left: 5px;
+            vertical-align: text-bottom;
+        }
+
+        /* Tracks GINA */
+        .track-box { padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid transparent; }
+        .track-1 { background-color: #E8F5E9; border-color: #C8E6C9; border-left: 5px solid #2E7D32; }
+        .track-2 { background-color: #FFF3E0; border-color: #FFE0B2; border-left: 5px solid #EF6C00; }
+        .track-title { font-weight: 800; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.9rem; }
+
+        /* Section Dividers */
+        .section-title { 
+            background: var(--theme-asthma); color: white; 
+            padding: 10px 15px; border-radius: 8px; 
+            font-weight: bold; margin: 30px 0 15px 0; 
+            text-align: center; text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(103, 58, 183, 0.2);
+        }
+
+        /* Check lists */
+        .check-list li { margin-bottom: 6px; }
+        .check-list li::before { content: "• "; color: var(--theme-asthma); font-weight: bold; }
+
+        /* Child Criteria Box */
+        .child-box { background: #E3F2FD; border: 1px dashed #90CAF9; padding: 10px; border-radius: 6px; margin-top: 15px; }
+
+        /* Biomarker Box */
+        .bio-box { background: #F3E5F5; border-left: 4px solid #AB47BC; padding: 12px; margin-top: 15px; border-radius: 4px; }
+
+        .ref-section { margin-top: 40px; font-size: 0.75rem; color: #777; border-top: 1px solid #ddd; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='resumos.html'">⬅</button>
+        <div class="app-title">Asma (GINA 2025)</div>
+    </header>
+
+    <div class="container">
+
+        <div class="section-title">🫁 Quadro Clínico Típico</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🌬️ Sintomas e Padrões</div>
+            <div class="res-content">
+                <p>Doença heterogênea caracterizada por inflamação crônica das vias aéreas.</p>
+                <ul class="check-list">
+                    <li><strong>Sintomas Cardinais:</strong> Sibilância (chiado), falta de ar (dispneia), opressão torácica e tosse.</li>
+                    <li><strong>Variabilidade (Marca registrada):</strong> Sintomas variam ao longo do tempo e em intensidade.</li>
+                    <li><strong>Piora Noturna/Matinal:</strong> Comum despertar com sintomas ou piora logo cedo.</li>
+                    <li><strong>Gatilhos:</strong> Exercício, risada, alérgenos, ar frio, infecções virais.</li>
+                </ul>
+                <p style="font-size:0.85rem; margin-top:10px; background:#F3E5F5; padding:8px; border-radius:6px;">
+                    <strong>🚩 Atenção:</strong> Tosse isolada sem outros sintomas respiratórios raramente é asma.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-title">📐 Diagnóstico e Critérios</div>
+
+        <div class="resumo-box">
+            <div class="res-header">⚙️ Limitação ao Fluxo Aéreo (Espirometria)</div>
+            <div class="res-content">
+                <p>A confirmação do diagnóstico requer a demonstração de <strong>Limitação Variável ao Fluxo Aéreo Expiratório</strong>.</p>
+                
+                <h4 style="color:#4527A0;">1. Critérios de Obstrução</h4>
+                <table class="table-custom">
+                    <tr><th>Parâmetro</th><th>Adultos</th><th>Crianças</th></tr>
+                    <tr><td><strong>Índice de Tiffeneau (VEF1/CVF)</strong></td><td>Reduzido (Geralmente < 0,75 – 0,80)</td><td>Reduzido (Geralmente < 0,90)</td></tr>
+                </table>
+
+                <h4 style="color:#4527A0; margin-top:15px;">2. Critérios de Reversibilidade (Variabilidade)</h4>
+                <table class="table-custom">
+                    <tr><th>Teste</th><th>Critério Positivo</th></tr>
+                    <tr><td><strong>Prova Broncodilatadora (PBD)</strong><br><small>(Após 200-400mcg salbutamol)</small></td><td><strong>Adultos:</strong> Aumento do VEF1 > 12% <strong>E</strong> > 200 ml.<br><strong>Crianças:</strong> Aumento do VEF1 > 12% do previsto.</td></tr>
+                    <tr><td><strong>Variabilidade Diurna do PFE</strong><br><small>(Média de 2 semanas)</small></td><td><strong>Adultos:</strong> > 10%<br><strong>Crianças:</strong> > 13%</td></tr>
+                    <tr><td><strong>Teste Terapêutico</strong><br><small>(4 semanas de tratamento)</small></td><td>Melhora significativa do VEF1 ou PFE após uso de corticoide inalatório.</td></tr>
+                </table>
+
+                <div class="bio-box">
+                    <strong>🧬 Biomarcadores e Inflamação Tipo 2 (T2)</strong>
+                    <p style="font-size:0.85rem; margin-top:5px;">
+                        A GINA incentiva a avaliação do fenótipo inflamatório. Marcadores elevados sugerem boa resposta a corticoides (CI) e biológicos específicos.
+                    </p>
+                    <ul class="check-list" style="font-size:0.85rem;">
+                        <li><strong>Eosinófilos no Sangue:</strong> > 150 células/µL (Elevado) / > 300 (Muito elevado).</li>
+                        <li><strong>FeNO (Óxido Nítrico Exalado):</strong> Marcador de inflamação eosinofílica nas vias aéreas.
+                            <br><em>> 20 ppb:</em> Suporta diagnóstico de asma T2 e prevê resposta a CI.
+                            <br><em>Nota:</em> FeNO isolado não confirma nem exclui asma.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="child-box">
+                    <h4 style="color:#0277BD; margin-bottom:5px;">👶 Crianças Pequenas (< 5 anos)</h4>
+                    <p>Diagnóstico é <strong>clínico e probabilístico</strong> (espirometria inviável).</p>
+                    <ul class="check-list">
+                        <li><strong>Sintomas:</strong> Tosse/chiado recorrentes (> 10 dias durante infecções virais).</li>
+                        <li><strong>Atividade:</strong> Sintomas ao rir, chorar ou brincar.</li>
+                        <li><strong>História:</strong> Eczema atópico, rinite ou asma em parentes de 1º grau.</li>
+                        <li><strong>Prova Terapêutica (Ouro):</strong> Melhora clínica evidente após 2-3 meses de CI e piora após suspensão.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">💊 Manejo (GINA 2025)</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🚦 Vias de Tratamento (Tracks)</div>
+            <div class="res-content">
+                <p>Para Adultos e Adolescentes, o GINA divide o tratamento em dois caminhos ("Tracks").</p>
+                
+                <div class="track-box track-1">
+                    <span class="track-title" style="color:#1B5E20;">VIA 1 (PREFERENCIAL) ⭐</span>
+                    <p style="margin:0;"><strong>Alívio (Resgate):</strong> CI-Formoterol em baixa dose.<br>
+                    <strong>Manutenção:</strong> CI-Formoterol (MART) ou uso apenas se necessário (Steps 1-2).<br>
+                    <em>Vantagem:</em> Reduz risco de exacerbação grave comparado ao SABA isolado.</p>
+                </div>
+
+                <div class="track-box track-2">
+                    <span class="track-title" style="color:#E65100;">VIA 2 (ALTERNATIVA)</span>
+                    <p style="margin:0;"><strong>Alívio:</strong> SABA (Salbutamol).<br>
+                    <strong>Manutenção:</strong> CI diário (Obrigatório adesão rigorosa).<br>
+                    <em>Risco:</em> Se o paciente esquecer o CI e usar só SABA, o risco de crise aumenta.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">⚖️ Posologia: Corticoides Inalatórios (GINA 2025)</div>
+            <div class="res-content">
+                <p>Definição de dose Baixa, Média e Alta (mcg/dia). <strong>Atenção:</strong> Doses dependem do dispositivo.</p>
+                
+                <h4 style="color:#4527A0; margin-top:15px; background:#EDE7F6; padding:5px;">Adultos e Adolescentes (>12 anos)</h4>
+                <table class="table-custom" style="font-size:0.8rem;">
+                    <tr>
+                        <th>Fármaco</th>
+                        <th>Dose Baixa (mcg)</th>
+                        <th>Dose Média (mcg)</th>
+                        <th>Dose Alta (mcg)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Beclometasona</strong> (HFA - Spray)</td>
+                        <td>200 – 500</td>
+                        <td>> 500 – 1000</td>
+                        <td>> 1000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Budesonida</strong> (DPI - Pó)</td>
+                        <td>200 – 400</td>
+                        <td>> 400 – 800</td>
+                        <td>> 800</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fluticasona Prop.</strong> (DPI - Pó)</td>
+                        <td>100 – 250</td>
+                        <td>> 250 – 500</td>
+                        <td>> 500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mometasona</strong> (DPI - Pó)</td>
+                        <td>200</td>
+                        <td>400</td>
+                        <td>> 400</td>
+                    </tr>
+                </table>
+
+                <h4 style="color:#4527A0; margin-top:20px; background:#E3F2FD; padding:5px;">Crianças (6-11 anos)</h4>
+                <table class="table-custom" style="font-size:0.8rem;">
+                    <tr>
+                        <th>Fármaco</th>
+                        <th>Dose Baixa (mcg)</th>
+                        <th>Dose Média (mcg)</th>
+                        <th>Dose Alta (mcg)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Beclometasona</strong> (HFA - Spray)</td>
+                        <td>100 – 200</td>
+                        <td>> 200 – 400</td>
+                        <td>> 400</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Budesonida</strong> (DPI/Spray)</td>
+                        <td>100 – 200</td>
+                        <td>> 200 – 400</td>
+                        <td>> 400</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fluticasona Prop.</strong> (Spray)</td>
+                        <td>50 – 100</td>
+                        <td>> 100 – 200</td>
+                        <td>> 200</td>
+                    </tr>
+                </table>
+
+                <h4 style="color:#4527A0; margin-top:20px; background:#FFF3E0; padding:5px;">Crianças Pequenas (< 5 anos)</h4>
+                <p style="font-size:0.85rem;">Sugestão de <strong>Dose Baixa Diária</strong> para início de tratamento:</p>
+                <ul class="check-list">
+                    <li><strong>Budesonida (Nebulização):</strong> 500 mcg/dia.</li>
+                    <li><strong>Fluticasona (Spray + Espaçador):</strong> 50 mcg/dia.</li>
+                    <li><strong>Beclometasona (Spray + Espaçador):</strong> 100 mcg/dia.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-title">💊 Medicamentos Disponíveis (Brasil/SUS)</div>
+
+        <div class="resumo-box">
+            <div class="res-header">📋 Lista Prática</div>
+            <div class="res-content">
+                <table class="drug-table">
+                    <tr><th>Classe</th><th>Fármaco</th><th>Disponibilidade</th></tr>
+                    <tr>
+                        <td><strong>SABA (Alívio)</strong></td>
+                        <td><span class="drug-name">Salbutamol (Aerolin)</span></td>
+                        <td><span class="tag-sus">SUS</span> (UBS)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CI (Manutenção)</strong></td>
+                        <td><span class="drug-name">Beclometasona (HFA)</span></td>
+                        <td><span class="tag-sus">SUS</span> (UBS - Dose habitual: 200-250mcg/puff)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CI (Manutenção)</strong></td>
+                        <td><span class="drug-name">Budesonida</span></td>
+                        <td><span class="tag-sus">SUS</span> (Farmácia Popular)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CI + LABA</strong></td>
+                        <td><span class="drug-name">Budesonida + Formoterol (Alenia)</span></td>
+                        <td><span class="tag-sus">SUS</span> (Alto Custo - Exige LME/Espirometria)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CI + LABA</strong></td>
+                        <td><span class="drug-name">Fluticasona + Salmeterol (Seretide)</span></td>
+                        <td>Privado</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="ref-section">
+            <strong>Referência:</strong><br>
+            Global Initiative for Asthma. Global Strategy for Asthma Management and Prevention, 2025. Updated November 2025.<br>
+            SBPT. Recomendações para o manejo da asma da Sociedade Brasileira de Pneumologia e Tisiologia - 2021.
+        </div>
+
+    </div>
+
+</body>
+</html>
